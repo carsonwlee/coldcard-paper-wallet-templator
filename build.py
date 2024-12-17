@@ -152,7 +152,6 @@ class TemplateBuilder(object):
 
 class WalletBuilder(TemplateBuilder):
     def insert_values(self, page_num, template_name):
-
         if template_name == 'placeholder':
             self.add_qr_spot('addr', placeholders.addr, 1.5*inch, 3.75*inch)
             self.add_qr_spot('pk', placeholders.privkey, 6.75*inch, 3.75*inch)
@@ -164,6 +163,11 @@ class WalletBuilder(TemplateBuilder):
             self.address_at(1.00*inch, 1.0*inch)
 
         elif template_name == 'coldcard-paper':
+            x = 1.5*inch
+            self.addr_qr(x, 7.5*inch, 2*inch)
+            self.privkey_qr(x, 1.1*inch, 2*inch)
+
+        elif template_name == 'holiday_cheer':
             x = 1.5*inch
             self.addr_qr(x, 7.5*inch, 2*inch)
             self.privkey_qr(x, 1.1*inch, 2*inch)
@@ -325,7 +329,7 @@ def file_checker(fname):
 
 if __name__ == '__main__':
 
-    for fn in [ 'coldcard-paper', 'placeholder']:
+    for fn in [ 'coldcard-paper', 'placeholder', 'holiday_cheer']:
 
         outfile = f'outputs/{fn}.pdf'
 
